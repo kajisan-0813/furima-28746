@@ -17,7 +17,6 @@
 
 - has_many :items dependent: destroy
 - has_many :comments dependent: destroy
-- belongs_to :destination dependent: destroy
 - belongs_to :transaction 
 
 
@@ -31,7 +30,6 @@
 | adress           | string  | null: false                   |
 | building_name    | string  |                               |
 | phone_number     | ibteger | null: false                   |
-| user_id          | integer | null: false, foreign_key:true |
 | transaction_id   | integer | null: false, foreign_key:true |
 
 
@@ -45,11 +43,16 @@
 | Column         | Type    | Options                       |
 | -------------- | ------- | ----------------------------- |
 | name           | string  | null: false                   |
-| price          | string  | null: false                   | 
-| description    | string  | null: false                   |
-| item_condition | string  | null: false                   |
-| days           | string  | null: false                   |
+| price          | integer | null: false                   | 
+| description    | text    | null: false                   |
+| item_condition | integer | null: false                   |
+| shipping_days  | string  | null: false                   |
+| shipping_cost  | string  | null: false                   |
 | user_id        | integer | null: false, oreign_key: true |
+| seller         | integer | null: false                   |
+| category       | string  | null: false                   |
+
+
 
 ### Association
 
