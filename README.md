@@ -6,7 +6,7 @@
 | ---------------- | ------ | ----------- |
 | nickname         | string | null: false |
 | email            | string | null: false |
-| user_password    | string | null: false |
+| password         | string | null: false |
 | family_name      | string | null: false |
 | first_name       | string | null: false |
 | family_name_kana | string | null: false |
@@ -18,6 +18,7 @@
 - has_many :items dependent: destroy
 - has_many :comments dependent: destroy
 - belongs_to :destination dependent: destroy
+- belongs_to :transaction 
 
 
 ## destinations テーブル
@@ -28,9 +29,11 @@
 | prefecture       | integer | null: false                   | 
 | city             | string  | null: false                   |
 | adress           | string  | null: false                   |
-| building_name    | string  | null: false                   |
+| building_name    | string  |                               |
 | phone_number     | ibteger | null: false                   |
 | user_id          | integer | null: false, foreign_key:true |
+| transaction_id   | integer | null: false, foreign_key:true |
+
 
 ### Association
 
@@ -39,20 +42,19 @@
 
 ## items テーブル
 
-| Column         | Type    | Options     |
-| -------------- | ------- | ----------- |
-| name           | string  | null: false |
-| price          | string  | null: false | 
-| description    | string  | null: false |
-| item_condition | string  | null: false |
-| days           | string  | null: false |
-| user_id        | integer | null: false |
-| categorys_id   | integer | null: false |
+| Column         | Type    | Options                       |
+| -------------- | ------- | ----------------------------- |
+| name           | string  | null: false                   |
+| price          | string  | null: false                   | 
+| description    | string  | null: false                   |
+| item_condition | string  | null: false                   |
+| days           | string  | null: false                   |
+| user_id        | integer | null: false, oreign_key: true |
 
 ### Association
 
 - belongs_to :user 
-- belongs_to :category 
+- belongs_to :transacition
 - has_many :images dependent: :destroy
 - has_many :comments dependent: :destroy
 
@@ -81,7 +83,7 @@
 
 - belongs_to :item
 
-## transaction テーブル
+## transactions テーブル
 
 | Column  | Type    | Options                        |
 | --------| ------- | ------------------------------ |                   
