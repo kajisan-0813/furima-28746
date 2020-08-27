@@ -24,16 +24,12 @@
 
 | Column           | Type    | Options                       |
 | ---------------- | ------- | ----------------------------- |
-| family_name      | string  | null: false                   |
-| first_name       | string  | null: false                   |
-| family_name_kana | string  | null: false                   |
-| first_name_kana  | string  | null: false                   |
 | post_code        | string  | null: false                   |
-| prefecture       | string  | null: false                   | 
+| prefecture       | integer | null: false                   | 
 | city             | string  | null: false                   |
 | adress           | string  | null: false                   |
-| building_name    |         |                               |
-| phone_number     |         |                               |
+| building_name    | string  | null: false                   |
+| phone_number     | ibteger | null: false                   |
 | user_id          | integer | null: false, foreign_key:true |
 
 ### Association
@@ -43,19 +39,20 @@
 
 ## items テーブル
 
-| Column         | Type    | Options                       |
-| -------------- | ------- | ----------------------------- |
-| name           | string  | null: false                   |
-| price          | string  | null: false                   | 
-| item_condition | string  | null: false                   |
-| days           | string  | null: false                   |
-| user_id        | integer | null: false, foreign_key:true |
-| categorys_id   | integer | null: false, foreign_key:true |
+| Column         | Type    | Options     |
+| -------------- | ------- | ----------- |
+| name           | string  | null: false |
+| price          | string  | null: false | 
+| description    | string  | null: false |
+| item_condition | string  | null: false |
+| days           | string  | null: false |
+| user_id        | integer | null: false |
+| categorys_id   | integer | null: false |
 
 ### Association
 
-- belongs_to :user dependent :destroy
-- belongs_to :category dependent :destroy
+- belongs_to :user 
+- belongs_to :category 
 - has_many :images dependent: :destroy
 - has_many :comments dependent: :destroy
 
@@ -84,15 +81,19 @@
 
 - belongs_to :item
 
-## categorys テーブル
+## transaction テーブル
 
-| Column | Type   | Options     |
-| ------ | ------ | ------------|                   
-| name   | string | null: false |
+| Column  | Type    | Options                        |
+| --------| ------- | ------------------------------ |                   
+| user_id | integer | null: false, foreign_key: true |
+| item_id | integer | null: false, foreign_key: true |
 
 ### Association
 
-- has_many :items
+- belongs_to :user
+- belongs_to :item
+
+
 
 
 This README would normally document whatever steps are necessary to get the
