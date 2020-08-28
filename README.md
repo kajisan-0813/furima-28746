@@ -17,7 +17,7 @@
 
 - has_many :items dependent: destroy
 - has_many :comments dependent: destroy
-- has_many :transaction 
+- has_many :transactions 
 
 
 ## destinations テーブル
@@ -40,15 +40,16 @@
 
 ## items テーブル
 
-| Column            | Type    | Options                       |
-| ----------------- | ------- | ----------------------------- |
-| name              | string  | null: false                   |
-| price             | integer | null: false                   | 
-| description       | text    | null: false                   |
-| item_condition_id | string  | null: false                   |
-| category_id       | string  | null: false                   |
-| sipping_cost_id   | string  | null: false                   |
-| sipping_days_id   | string  | null: false                   |
+| Column             | Type    | Options                       |
+| ------------------ | ------- | ----------------------------- |
+| name               | string  | null: false                   |
+| price              | integer | null: false                   | 
+| description        | text    | null: false                   |
+| item_condition_id  | string  | null: false                   |
+| category_id        | string  | null: false                   |
+| shipping_cost_id   | string  | null: false                   |
+| shipping_date_id   | string  | null: false                   |
+| shipping_origin_id | string  | null: false                   |
 
 ### Association
 
