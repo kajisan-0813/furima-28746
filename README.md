@@ -45,11 +45,11 @@
 | name               | string  | null: false                   |
 | price              | integer | null: false                   | 
 | description        | text    | null: false                   |
-| item_condition_id  | string  | null: false                   |
-| category_id        | string  | null: false                   |
-| shipping_cost_id   | string  | null: false                   |
-| shipping_date_id   | string  | null: false                   |
-| shipping_origin_id | string  | null: false                   |
+| item_condition_id  | integer | null: false                   |
+| category_id        | integer | null: false                   |
+| shipping_cost_id   | integer | null: false                   |
+| shipping_date_id   | integer | null: false                   |
+| shipping_origin_id | integer | null: false                   |
 
 ### Association
 
