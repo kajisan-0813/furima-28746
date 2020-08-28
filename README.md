@@ -29,7 +29,7 @@
 | city             | string  | null: false                   |
 | adress           | string  | null: false                   |
 | building_name    | string  |                               |
-| phone_number     | ibteger | null: false                   |
+| phone_number     | string  | null: false                   |
 | transaction_id   | integer | null: false, foreign_key:true |
 
 
