@@ -17,7 +17,7 @@
 
 - has_many :items dependent: destroy
 - has_many :comments dependent: destroy
-- belongs_to :transaction 
+- has_many :transaction 
 
 
 ## destinations テーブル
@@ -35,29 +35,25 @@
 
 ### Association
 
-- berongs_to :user
+- berongs_to :transaction
 
 
 ## items テーブル
 
-| Column         | Type    | Options                       |
-| -------------- | ------- | ----------------------------- |
-| name           | string  | null: false                   |
-| price          | integer | null: false                   | 
-| description    | text    | null: false                   |
-| item_condition | integer | null: false                   |
-| shipping_days  | string  | null: false                   |
-| shipping_cost  | string  | null: false                   |
-| user_id        | integer | null: false, oreign_key: true |
-| seller         | integer | null: false                   |
-| category       | string  | null: false                   |
-
-
+| Column            | Type    | Options                       |
+| ----------------- | ------- | ----------------------------- |
+| name              | string  | null: false                   |
+| price             | integer | null: false                   | 
+| description       | text    | null: false                   |
+| item_condition_id | string  | null: false                   |
+| category_id       | string  | null: false                   |
+| sipping_cost_id   | string  | null: false                   |
+| sipping_days_id   | string  | null: false                   |
 
 ### Association
 
 - belongs_to :user 
-- belongs_to :transacition
+- has_one :transacition
 - has_many :images dependent: :destroy
 - has_many :comments dependent: :destroy
 
@@ -97,6 +93,7 @@
 
 - belongs_to :user
 - belongs_to :item
+- has_one :destination
 
 
 
