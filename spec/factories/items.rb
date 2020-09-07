@@ -8,10 +8,7 @@ FactoryBot.define do
     shipping_cost_id { 2 }
     shipping_date_id { 3 }
     shipping_origin_id { 2 }
-    
-    
-    association :user
 
-    
+    association :user
   end
 end
