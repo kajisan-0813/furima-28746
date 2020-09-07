@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  has_many :items
   with_options presence: true do
     validates :password, :password_confirmation, format: { with: /\A[a-zA-Z0-9]+\z/ }
     validates :family_name, :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
