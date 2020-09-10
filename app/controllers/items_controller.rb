@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @items = Item.all.order("id DESC")
   end
@@ -16,6 +16,10 @@ class ItemsController < ApplicationController
     else
       redirect_to new_item_path
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   private
