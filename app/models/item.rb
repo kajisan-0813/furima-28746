@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_date
   belongs_to :user
   has_one_attached :image
-  has_one :transaction
+  has_one :item_transaction
   with_options presence: true do
     validates :price
     validates :category, :item_condition, :shipping_cost, :shipping_origin, :shipping_date, :name, :description, :image, :user_id, :price
