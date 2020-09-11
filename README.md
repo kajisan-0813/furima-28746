@@ -17,7 +17,7 @@
 
 - has_many :items dependent: destroy
 - has_many :comments dependent: destroy
-- has_many :transactions 
+- has_many :item_transactions 
 
 
 ## destinations テーブル
