@@ -30,12 +30,12 @@
 | adress           | string  | null: false                   |
 | building_name    | string  |                               |
 | phone_number     | string  | null: false                   |
-| transaction_id   | integer | null: false, foreign_key:true |
+| item_transaction_id   | integer | null: false, foreign_key:true |
 
 
 ### Association
 
-- berongs_to :transaction
+- belongs_to :item_transaction
 
 
 ## items テーブル
