@@ -1,7 +1,7 @@
 class UserTransaction
 
   include ActiveModel::Model
-  attr_accessor :post_code, :prefecture, :city, :adress, :building_name, :phone_number, :item_transaction_id,:user_id,:item_id
+  attr_accessor :post_code, :prefecture, :city, :adress, :building_name, :phone_number, :item_transaction_id,:user_id,:item_id,:token
 
   with_options presence: true do
     validates :post_code, :prefecture, :city, :adress, :phone_number, :item_transaction_id
@@ -13,4 +13,4 @@ class UserTransaction
     item_transaction = ItemTransaction.create(user_id: user_id, item_id: item_id)
     Destination.create(post_code: post_code, prefecture: prefecture, city: city, adress: adress, building_name: building_name, phone_number: phone_number, item_transaction_id: item_transaction.id)
   end
-end
+end 
