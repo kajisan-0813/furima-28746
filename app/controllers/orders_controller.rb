@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :move_to_index, except: [:index]
   def index
     @item =Item.find(params[:item_id])
+    @order = UserTransaction.new
   end
 
   def new
@@ -13,7 +15,9 @@ class OrdersController < ApplicationController
     @item =Item.find(params[:item_id])
     @order = UserTransaction.new(destination_params)
   
-    if @order.save
+    if @order.valid?
+      @order.save
+
       pay_item
       return redirect_to root_path
     else
@@ -35,6 +39,13 @@ class OrdersController < ApplicationController
       currency:'jpy'                 # 通貨の種類(日本円)
     )
   end
+
+  def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
+  end
+  
  
 
   
