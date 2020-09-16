@@ -1,8 +1,10 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :move_to_index, except: [:index]
+  before_action :authenticate_user! 
+  before_action :move_to_index 
+  before_action :set_item, only: [:index, :create]
+  before_action :move_to_order
+
   def index
-    @item = Item.find(params[:item_id])
     @order = UserTransaction.new
   end
 
@@ -11,7 +13,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order = UserTransaction.new(destination_params)
 
     if @order.valid?
@@ -40,6 +41,21 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    redirect_to action: :index unless user_signed_in?
+    @item = Item.find(params[:item_id])
+    if current_user.id == @item.user_id
+      redirect_to root_path
+     end
+  end
+
+  def move_to_order
+    @item =  Item.find(params[:item_id])
+ 
+    if @item.item_transaction.present?
+      redirect_to root_path
+    end
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
