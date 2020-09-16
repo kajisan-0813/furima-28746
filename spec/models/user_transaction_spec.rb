@@ -17,7 +17,7 @@ RSpec.describe UserTransaction, type: :model do
     it 'post_codeがハイフンを含んだ正しい形式でないと保存できないこと' do
       @user_transaction.post_code = '1234567'
       @user_transaction.valid?
-      expect(@user_transaction.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+      expect(@user_transaction.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
     end
     it 'prefectureを選択していないと保存できないこと' do
       @user_transaction.prefecture = 0
@@ -38,14 +38,13 @@ RSpec.describe UserTransaction, type: :model do
       @user_transaction.phone_number = nil
       @user_transaction.valid?
       expect(@user_transaction.errors.full_messages).to include("Phone number can't be blank")
-
     end
     it '電話番号にはハイフンは不要で、11桁以内であること' do
       @user_transaction.phone_number = '090-1111-1111'
       @user_transaction.valid?
-      expect(@user_transaction.errors.full_messages).to include("Phone number is invalid")
+      expect(@user_transaction.errors.full_messages).to include('Phone number is invalid')
     end
-    
+
     it 'tokenは空だと保存できないこと' do
       @user_transaction.token = nil
       @user_transaction.valid?
